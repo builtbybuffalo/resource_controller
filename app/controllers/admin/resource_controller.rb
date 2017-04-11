@@ -77,6 +77,8 @@ module Admin
                   else
                     obj = model_class.find_by id: id_param
                     obj = model_class.friendly.find id_param if obj.blank?
+
+                    obj
                   end
 
       instance_variable_set("@#{model_path.underscore}", @object)
