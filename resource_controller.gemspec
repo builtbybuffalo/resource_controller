@@ -28,6 +28,12 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["app", "lib"]
 
   spec.add_development_dependency "bundler", "~> 1.12"
-  spec.add_development_dependency "rake", "~> 12.0"
   spec.add_runtime_dependency 'kaminari'
+  spec.add_runtime_dependency "bootstrap-sass", "~> 3.3.7"
+  spec.add_runtime_dependency "bootstrap-datepicker-rails"
+  spec.add_runtime_dependency "rails-jquery-ui-sortable"
+  spec.add_runtime_dependency "awesome_nested_set", "~> 3.1", ">= 3.1.1"
+  spec.add_runtime_dependency "ckeditor"
+  spec.add_runtime_dependency "select2-rails"
+  spec.add_runtime_dependency "acts_as_list"
 end

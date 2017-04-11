@@ -44,7 +44,7 @@ module Admin
     helper_method :model_name
 
     def model_path
-      model_class.name.underscore.parameterize("_")
+      model_class.name.underscore.parameterize(separator: "_")
     end
     helper_method :model_path
 

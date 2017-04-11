@@ -1,0 +1,14 @@
+<% if obj.errors.any? %>
+	<div class="grid__item small-12">
+		<div class="js-donation-notification notification notification--error notification--above is-active block-margin-b--xmedium">
+			<p>There was an error. Please correct the issues below.</p>
+			<% if obj.errors %>
+				<ul>
+					<% obj.errors.full_messages.each do |msg| %>
+						<li><%= msg %></li>
+					<% end %>
+				</ul>
+			<% end %>
+		</div>
+	</div>
+<% end %>
