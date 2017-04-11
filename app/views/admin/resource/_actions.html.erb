@@ -1,0 +1,3 @@
+<% if (path = new_polymorphic_path [:admin, model_path] rescue nil) %>
+	<a href="<%= path %>" class="btn btn-primary">New <%= model_name %></a>
+<% end %>

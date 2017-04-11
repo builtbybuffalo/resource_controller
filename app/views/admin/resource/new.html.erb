@@ -1,0 +1,15 @@
+<% content_for :heading, "New #{model_name}" %>
+
+<%= form_for [:admin, @object] do |f| %>
+	<%= render "errors", object: @object %>
+
+	<%= render "form", f: f %>
+
+	<div class="row">
+		<div class="col-md-12">
+			<hr>
+			<button type="submit" class="btn btn-primary">Create <%= model_name %></button>
+			<a href="<%= url_for :back %>" class="btn btn-danger">Cancel</a>
+		</div>
+	</div>
+<% end %>

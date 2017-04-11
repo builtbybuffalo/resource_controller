@@ -1,0 +1,27 @@
+<% content_for :heading, model_name.pluralize.titleize %>
+
+<% content_for :actions do %>
+	<%= render "actions" if partial_exists? "actions" %>
+<% end %>
+
+<% if partial_exists? "search" %>
+	<div class="well">
+		<%= search_form_for [:admin, @q] do |f| %>
+			<%= render "search", f: f %>
+
+			<div class="row">
+				<div class="col-md-12">
+					<%= f.submit "Search", class: "btn btn-primary" %>
+				</div>
+			</div>
+		<% end %>
+	</div>
+<% end %>
+
+<%= render "table" %>
+
+<div class="row">
+	<div class="col-md-12 text-center">
+		<%= paginate @collection, theme: :admin %>
+	</div>
+</div>

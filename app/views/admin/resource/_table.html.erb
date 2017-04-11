@@ -1,0 +1,38 @@
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<% collection_table_fields.each do |field, label| %>
+				<th><%= sort_link @q, field, label %></th>
+			<% end %>
+			<th>&nbsp;</th>
+		</tr>
+	</thead>
+	<body>
+		<% if @collection.any? %>
+			<% if partial_exists? "index_row" %>
+				<%= render partial: "index_row", collection: @collection, as: :object %>
+			<% else %>
+				<% @collection.each do |record| %>
+					<tr>
+						<% collection_table_fields.keys.each do |field| %>
+							<% value = record.instance_eval(field.to_s) %>
+							<% value = "<span class=\"label label-#{value ? "success" : "danger"}\">#{value}</span>".html_safe if value.in? [true, false]  %>
+							<% value = value.format if value.is_a?(Money)  %>
+							<td><%= link_to_if field.to_s == "id", value, [:edit, :admin, record] %></td>
+						<% end %>
+						<td class="actions"><%= link_to("Edit", [:edit, :admin, record], class: "btn btn-primary btn-xs") %></td>
+					    <% if duplicatable? %>
+							<td class="actions"><%= link_to("Duplicate", [:duplicate, :admin, record], class: "btn btn-primary btn-xs") %></td>
+					    <% end %>
+					</tr>
+				<% end %>
+			<% end %>
+		<% else %>
+			<tr>
+				<td colspan="<%= collection_table_fields.count %>">
+					No <%= model_name.pluralize.titleize %> found.
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
