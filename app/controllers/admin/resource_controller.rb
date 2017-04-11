@@ -2,8 +2,8 @@ module Admin
   class ResourceController < Admin::BaseController
     respond_to :html
 
-    before_action :load_collection, only: :index
-    before_action :load_object, unless: -> { skip_preload.include? action_name.to_sym }
+    prepend_before_action :load_collection, only: :index
+    prepend_before_action :load_object, unless: -> { skip_preload.include? action_name.to_sym }
 
     def create
       @object.update_attributes(permitted_params)
