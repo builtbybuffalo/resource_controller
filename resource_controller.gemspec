@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["jaspertandy"]
   spec.email         = ["jspr@tndy.me"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{Admin resource controller}
+  spec.description   = %q{An admin resource controller}
+  spec.homepage      = "https://github.com/builtbybuffalo/resource_controller"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
@@ -28,5 +28,5 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "bundler", "~> 1.12"
-  spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency "rake", "~> 12.0"
 end
