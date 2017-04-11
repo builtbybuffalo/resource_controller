@@ -75,7 +75,8 @@ module Admin
       @object ||= if %w(new create).include? action_name
                     model_class.new
                   else
-                    model_class.find id_param
+                    obj = model_class.find_by id: id_param
+                    obj = model_class.friendly.find id_param if obj.blank?
                   end
 
       instance_variable_set("@#{model_path.underscore}", @object)
