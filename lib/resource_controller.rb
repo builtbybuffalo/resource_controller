@@ -1,4 +1,5 @@
 require "resource_controller/version"
+require "kaminari"
 
 module ResourceController
   if defined?(Rails)

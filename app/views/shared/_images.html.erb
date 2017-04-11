@@ -1,0 +1,39 @@
+<div class="col-md-12">
+	<div class="form-group ">
+		<%= f.label :images %>
+		<%= f.help_text local_assigns.has_key?(:help_text) ? local_assigns[:help_text] : "Add images to the post. The first image will be used for the banner image." %>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<ul class="js-sortable sortable row">
+			<%= f.nested_fields_for :images, wrapper_tag: :li, wrapper_options: { class: "col-sm-12" } do |i| %>
+				<%= i.hidden_field :position, class: "js-position" %>
+				<div class="row">
+					<div class="col-md-1">
+						<%= i.remove_nested_fields_link "X", class: "btn btn-danger btn-xs delete" %>
+						<span class="js-handle handle-icon icon handle glyphicon glyphicon-resize-vertical"></span>
+					</div>
+					<div class="col-md-1">
+						<% if i.object.asset.present? %>
+							<img src="<%= i.object.asset.url(:thumb) %>" class="img">
+						<% end %>
+					</div>
+					<div class="col-md-3">
+						<%= i.file_field :asset, class: "form-control" %><br>
+					</div>
+					<div class="col-md-3"><%= i.text_field :name, class: "form-control", placeholder: "Name" %><br></div>
+					<div class="col-md-4"><%= i.text_field :caption, class: "form-control", placeholder: "Caption" %></div>
+					<div class="col-xs-12"><hr></div>
+				</div>
+			<% end %>
+		</ul>
+	</div>
+</div>
+
+<div class="col-md-12">
+	<div class="form-group ">
+		<%= f.add_nested_fields_link :images, "Add image", class: "btn btn-info top-buffer" %>
+	</div>
+</div>
