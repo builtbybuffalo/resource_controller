@@ -4,6 +4,7 @@ require "bootstrap-sass"
 require "bootstrap-datepicker-rails"
 require "rails-jquery-ui-sortable"
 require "ckeditor"
+require "ckeditor/orm/active_record"
 require "select2-rails"
 require "acts_as_list"
 

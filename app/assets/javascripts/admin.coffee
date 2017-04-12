@@ -3,6 +3,7 @@
 #= require jquery-ui-sortable
 #= require nested_form_fields
 #= require ckeditor/init
+#= require ckeditor/config
 #= require quill/quill
 #= require admin/check-json
 #= require admin/sortable
