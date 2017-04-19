@@ -1,5 +1,5 @@
 module TemplateHelper
-  def partial_exists?(name)
-    lookup_context.template_exists? name, controller._prefixes, true
+  def partial_exists?(name, prefixes: true)
+    lookup_context.template_exists? name, (prefixes ? controller._prefixes : []), true
   end
 end

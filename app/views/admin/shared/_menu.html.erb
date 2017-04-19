@@ -20,6 +20,7 @@
 						<li><%= link_to "Pages", admin_content_pages_path %></li>
 					</ul>
 				</li>
+				<%= render "shared/menu_rest" if partial_exists? "shared/menu_rest", prefixes: false %>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><%= link_to 'Logout', "/logout" %></li>
