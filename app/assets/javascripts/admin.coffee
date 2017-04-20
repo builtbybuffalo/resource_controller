@@ -11,7 +11,7 @@
 #= require bootstrap
 #= require bootstrap-datepicker
 
-$.fn.datepicker.defaults.format = "dd/mm/yyyy";
+$.fn.datepicker.defaults.format = "yyyy-mm-dd";
 
 $(".js-select2").select2
   theme: "bootstrap"
