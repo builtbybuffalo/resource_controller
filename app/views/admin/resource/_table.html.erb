@@ -17,9 +17,28 @@
 						<% collection_table_fields.keys.each do |field| %>
 							<% value = record.instance_eval(field.to_s) %>
 							<% value = "<span class=\"label label-#{value ? "success" : "danger"}\">#{value}</span>".html_safe if value.in? [true, false]  %>
-							<td><%= link_to_if field.to_s == "id", value, [:edit, :admin, record] %></td>
+							<td>
+								<% if field.to_s == "id" %>
+									<% if respond_to?("edit_admin_#{record.class.name.underscore}_path") %>
+										<%= link_to(value, [:edit, :admin, record]) %>
+									<% elsif respond_to?("admin_#{record.class.name.underscore}_path") %>
+										<%= link_to(value, [:admin, record]) %>
+									<% else %>
+										<%= value %>
+									<% end %>
+								<% else %>
+									<%= value %>
+								<% end %>
+							</td>
 						<% end %>
-						<td class="actions"><%= link_to("Edit", [:edit, :admin, record], class: "btn btn-primary btn-xs") %></td>
+						<td class="actions">
+							<% if respond_to?("edit_admin_#{record.class.name.underscore}_path") %>
+								<%= link_to("Edit", [:edit, :admin, record], class: "btn btn-primary btn-xs") %>
+							<% end %>
+							<% if respond_to?("admin_#{record.class.name.underscore}_path") %>
+								<%= link_to("Show", [:admin, record], class: "btn btn-primary btn-xs") %>
+							<% end %>
+						</td>
 					    <% if duplicatable? %>
 							<td class="actions"><%= link_to("Duplicate", [:duplicate, :admin, record], class: "btn btn-primary btn-xs") %></td>
 					    <% end %>
