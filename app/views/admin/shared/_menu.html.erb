@@ -23,7 +23,7 @@
 				<%= render "shared/menu_rest" if partial_exists? "shared/menu_rest", prefixes: false %>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><%= link_to 'Logout', "/logout" %></li>
+				<%= render partial: "admin/shared/logout" if partial_exists? "admin/shared/logout", prefixes: false %>
 			</ul>
 		</div>
 	</div>
