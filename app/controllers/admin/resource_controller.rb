@@ -54,7 +54,11 @@ module Admin
     end
 
     def collection_scope
-      model_class
+      if model_class.respond_to?(:accessible_by) && defined?(:current_ability) && current_ability.present?
+        model_class.accessible_by(current_ability)
+      else
+        model_class
+      end
     end
 
     def id_param
