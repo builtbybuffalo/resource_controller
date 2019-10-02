@@ -27,7 +27,7 @@ $(document).ready ->
     editors.each (i, e) ->
       input = $(e).parent().find("textarea")
       instance = CKEDITOR.instances[input.attr("id")]
-      # ckeditor doesn't tidy up after itself
+      instance.updateElement()
       CKEDITOR.remove instance
       CKEDITOR.replace input.attr("id")
       $(e).remove()
