@@ -22,9 +22,21 @@ $(document).ready ->
     $(el).closest(selector).find("li:visible").each (i)->
       $(@).find(targetSelector).val(i+1)
 
+  reinitCkeditors = (el) ->
+    editors = el.find("div.cke")
+    editors.each (i, e) ->
+      input = $(e).parent().find("textarea")
+      instance = CKEDITOR.instances[input.attr("id")]
+      # ckeditor doesn't tidy up after itself
+      CKEDITOR.remove instance
+      CKEDITOR.replace input.attr("id")
+      $(e).remove()
+
   sort
     .sortable
-      stop: (event, ui) -> updateElements(ui.item)
+      stop: (event, ui) ->
+        updateElements(ui.item)
+        reinitCkeditors(ui.item)
       handle: handleSelector
     .on "fields_added.nested_form_fields", (event, param) ->
       updateElements(event.target)
