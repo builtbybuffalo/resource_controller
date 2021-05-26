@@ -27,7 +27,7 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["app", "lib"]
 
-  spec.add_development_dependency "bundler", "~> 1.12"
+  spec.add_development_dependency "bundler", ">= 2.2.10"
   spec.add_runtime_dependency 'kaminari'
   spec.add_runtime_dependency "bootstrap-sass", "~> 3.3.7"
   spec.add_runtime_dependency "bootstrap-datepicker-rails"
